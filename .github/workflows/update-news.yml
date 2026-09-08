@@ -1,0 +1,44 @@
+name: Update SP News
+
+on:
+  schedule:
+    - cron: '0 0 * * *'   # 09:00 KST
+    - cron: '0 9 * * *'   # 18:00 KST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Update news data
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python scripts/update_news.py
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet -- data/news.json; then
+            echo "No news changes"
+            exit 0
+          fi
+          git config user.name "spnews-bot"
+          git config user.email "spnews-bot@users.noreply.github.com"
+          git add data/news.json
+          git commit -m "chore: update news feed"
+          git push
