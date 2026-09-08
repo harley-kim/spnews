@@ -1,0 +1,25 @@
+{
+  "updated_at": "2026-09-08T14:45:00+09:00",
+  "items": [
+    {
+      "id": "welcome-1",
+      "type": "news",
+      "brand": "TAMRON",
+      "source": "SP NEWS",
+      "title": "SP NEWS 자동 수집 시스템이 준비되었습니다",
+      "summary": "해외 공식 발표와 주요 사진 전문 매체의 기사를 수집해 한국어로 보여주는 초기 버전입니다. GitHub Actions가 설정되면 실제 뉴스 데이터로 자동 교체됩니다.",
+      "url": "https://sunphoto.kr",
+      "published_at": "2026-09-08T14:45:00+09:00"
+    },
+    {
+      "id": "welcome-2",
+      "type": "video",
+      "brand": "Voigtlander",
+      "source": "YouTube",
+      "title": "한국어 리뷰 영상도 같은 타임라인에 표시됩니다",
+      "summary": "YouTube Data API 키를 등록하면 썬포토 취급 브랜드의 최신 한국어 리뷰 영상을 함께 수집하도록 구성되어 있습니다.",
+      "url": "https://www.youtube.com/",
+      "published_at": "2026-09-08T13:45:00+09:00"
+    }
+  ]
+}
